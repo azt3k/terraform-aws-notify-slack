@@ -61,6 +61,9 @@ resource "aws_iam_role_policy" "lambda" {
   count       = var.create ? 1 : 0
   name_prefix = "${var.lambda_function_name}-"
   role        = aws_iam_role.lambda[0].id
+  depends_on  = [
+    "aws_cloudwatch_log_group.lambda"
+  ]
   policy      = <<EOF
 {
   "Version": "2012-10-17",
