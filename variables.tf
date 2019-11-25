@@ -90,6 +90,12 @@ variable "sns_topic_tags" {
   default     = {}
 }
 
+variable "prefix" {
+  description = "Prefix for resource names"
+  type        = string
+  default     = ""
+}
+
 variable "cloudwatch_log_group_tags" {
   description = "Additional tags for the Cloudwatch log group"
   type        = map(string)

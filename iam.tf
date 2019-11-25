@@ -39,7 +39,7 @@
 
 resource "aws_iam_role" "lambda" {
   count               = var.create ? 1 : 0
-  name_prefix         = "${var.lambda_function_name}-"
+  name_prefix         = "${var.prefix}"
   tags                = merge(var.tags, var.iam_role_tags)
   assume_role_policy  = <<EOF
 {
@@ -59,7 +59,7 @@ EOF
 
 resource "aws_iam_role_policy" "lambda" {
   count       = var.create ? 1 : 0
-  name_prefix = "${var.lambda_function_name}-"
+  name_prefix = "${var.prefix}"
   role        = aws_iam_role.lambda[0].id
   depends_on  = [
     "aws_cloudwatch_log_group.lambda"
