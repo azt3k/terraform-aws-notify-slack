@@ -1,3 +1,12 @@
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = ">= 3.65.0"
+    }
+  }
+}
+
 data "aws_sns_topic" "this" {
   count = !var.create_sns_topic ? 1 : 0
   name  = var.sns_topic_name
@@ -88,3 +97,4 @@ resource "aws_lambda_function" "notify_slack" {
     ]
   }
 }
+
