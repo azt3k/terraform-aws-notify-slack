@@ -4,6 +4,12 @@ variable "create" {
   default     = true
 }
 
+variable "enable_data_encryption" {
+  type = bool
+  description = "Enables data encryption on specific resources"
+  default = false
+}
+
 variable "create_sns_topic" {
   description = "Whether to create new SNS topic"
   type        = bool
